@@ -24,17 +24,15 @@ export const chatMessageStream = async (
     }
     const possibleBaseURLs = [
       import.meta.env.VITE_BASE_URL,
-      "http://127.0.0.1:8000/",
-      "http://localhost:8000/",
+      "http://127.0.0.1:8000",
+      "http://localhost:8000",
     ].filter(Boolean);
 
     let lastError = null;
 
     for (const baseURL of possibleBaseURLs) {
       try {
-        console.log("Trying streaming request to:", `${baseURL}api/chat/`);
-
-        const response = await fetch(`${baseURL}api/chat/`, {
+        const response = await fetch(`${baseURL}/api/chat/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
